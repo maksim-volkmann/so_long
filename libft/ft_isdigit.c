@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvolkman <mvolkman@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 17:21:37 by mvolkman          #+#    #+#             */
-/*   Updated: 2024/02/26 18:24:47 by mvolkman         ###   ########.fr       */
+/*   Created: 2023/10/09 16:04:21 by mvolkman          #+#    #+#             */
+/*   Updated: 2023/11/04 12:54:59 by mvolkman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
-# include "libft/libft.h"
+#include "libft.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 100
-# endif
-
-#define ERROR_MESSAGE "SOMETHING IS WRONG!!!!\n"
-
-#endif
+int	ft_isdigit(int c)
+{
+	return ((c >= 48 && c <= 57));
+}

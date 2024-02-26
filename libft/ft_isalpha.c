@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvolkman <mvolkman@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 17:21:37 by mvolkman          #+#    #+#             */
-/*   Updated: 2024/02/26 18:24:47 by mvolkman         ###   ########.fr       */
+/*   Created: 2023/10/09 10:48:08 by mvolkman          #+#    #+#             */
+/*   Updated: 2023/11/04 12:54:03 by mvolkman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
-# include "libft/libft.h"
+#include "libft.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 100
-# endif
-
-#define ERROR_MESSAGE "SOMETHING IS WRONG!!!!\n"
-
-#endif
+int	ft_isalpha(int c)
+{
+	return (((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')));
+}

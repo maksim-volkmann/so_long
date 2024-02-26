@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvolkman <mvolkman@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 17:21:37 by mvolkman          #+#    #+#             */
-/*   Updated: 2024/02/26 18:24:47 by mvolkman         ###   ########.fr       */
+/*   Created: 2023/10/25 22:38:16 by mvolkman          #+#    #+#             */
+/*   Updated: 2023/10/25 22:41:21 by mvolkman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
-# include "libft/libft.h"
+#include "libft.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 100
-# endif
+void	ft_putendl_fd(char *s, int fd)
+{
+	int	i;
 
-#define ERROR_MESSAGE "SOMETHING IS WRONG!!!!\n"
-
-#endif
+	i = 0;
+	while (s[i] != '\0')
+		write(fd, &s[i++], 1);
+	write(fd, "\n", 1);
+}

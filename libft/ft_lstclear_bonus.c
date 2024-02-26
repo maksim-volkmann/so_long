@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvolkman <mvolkman@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 17:21:37 by mvolkman          #+#    #+#             */
-/*   Updated: 2024/02/26 18:24:47 by mvolkman         ###   ########.fr       */
+/*   Created: 2023/11/05 10:35:37 by mvolkman          #+#    #+#             */
+/*   Updated: 2023/11/05 10:51:47 by mvolkman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
-# include "libft/libft.h"
+#include "libft.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 100
-# endif
+void	ft_lstclear(t_list **lst, void (*del)(void*))
+{
+	t_list	*current;
+	t_list	*next;
 
-#define ERROR_MESSAGE "SOMETHING IS WRONG!!!!\n"
-
-#endif
+	current = *lst;
+	while (current)
+	{
+		next = current->next;
+		del(current->content);
+		free(current);
+		current = next;
+	}
+	*lst = NULL;
+}

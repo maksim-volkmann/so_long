@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvolkman <mvolkman@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 17:21:37 by mvolkman          #+#    #+#             */
-/*   Updated: 2024/02/26 18:24:47 by mvolkman         ###   ########.fr       */
+/*   Created: 2023/10/13 15:43:41 by mvolkman          #+#    #+#             */
+/*   Updated: 2023/10/26 01:50:24 by mvolkman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
-# include "libft/libft.h"
+#include "libft.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 100
-# endif
+char	*ft_strchr(const char *s, int c)
+{
+	int	i;
 
-#define ERROR_MESSAGE "SOMETHING IS WRONG!!!!\n"
-
-#endif
+	i = 0;
+	while (s[i] != '\0' && (unsigned char)s[i] != (unsigned char)c)
+		i++;
+	if (s[i] == (unsigned char)c)
+		return ((char *)&s[i]);
+	return (NULL);
+}

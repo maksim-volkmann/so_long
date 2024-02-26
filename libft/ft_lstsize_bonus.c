@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvolkman <mvolkman@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 17:21:37 by mvolkman          #+#    #+#             */
-/*   Updated: 2024/02/26 18:24:47 by mvolkman         ###   ########.fr       */
+/*   Created: 2023/11/04 16:30:45 by mvolkman          #+#    #+#             */
+/*   Updated: 2023/11/05 09:56:06 by mvolkman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
-# include "libft/libft.h"
+#include "libft.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 100
-# endif
+int	ft_lstsize(t_list *lst)
+{
+	int		i;
+	t_list	*current;
 
-#define ERROR_MESSAGE "SOMETHING IS WRONG!!!!\n"
-
-#endif
+	i = 0;
+	current = lst;
+	while (current)
+	{
+		i++;
+		current = current->next;
+	}
+	return (i);
+}

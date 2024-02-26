@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvolkman <mvolkman@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 17:21:37 by mvolkman          #+#    #+#             */
-/*   Updated: 2024/02/26 18:24:47 by mvolkman         ###   ########.fr       */
+/*   Created: 2023/10/23 16:43:10 by mvolkman          #+#    #+#             */
+/*   Updated: 2023/11/06 15:56:32 by mvolkman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
-# include "libft/libft.h"
+#include "libft.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 100
-# endif
+char	*ft_strnstr(const char *haystack, const char *needle, size_t n)
+{
+	size_t	l;
+	size_t	i;
 
-#define ERROR_MESSAGE "SOMETHING IS WRONG!!!!\n"
-
-#endif
+	i = 0;
+	l = ft_strlen(needle);
+	if (needle[0] == '\0')
+		return ((char *)haystack);
+	while (haystack[i] != '\0' && n >= l)
+	{
+		if (ft_strncmp(&haystack[i], needle, l) == 0)
+			return ((char *)&haystack[i]);
+		i++;
+		n--;
+	}
+	return (NULL);
+}
