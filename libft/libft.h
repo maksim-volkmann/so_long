@@ -6,7 +6,7 @@
 /*   By: mvolkman <mvolkman@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 21:38:25 by mvolkman          #+#    #+#             */
-/*   Updated: 2023/11/06 15:51:07 by mvolkman         ###   ########.fr       */
+/*   Updated: 2024/02/27 13:15:52 by mvolkman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 char	**ft_split(char const *s, char c);
+char	*ft_strstr(const char *haystack, const char *needle);
+int		ft_strcmp(const char *s1, const char *s2);
 
 // Bonus
 t_list	*ft_lstnew(void *content);

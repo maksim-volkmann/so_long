@@ -6,7 +6,7 @@
 #    By: mvolkman <mvolkman@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/19 21:34:32 by mvolkman          #+#    #+#              #
-#    Updated: 2023/11/06 17:32:55 by mvolkman         ###   ########.fr        #
+#    Updated: 2024/02/27 13:15:42 by mvolkman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,9 @@ SRC = \
 	ft_putstr_fd.c \
 	ft_putendl_fd.c \
 	ft_putnbr_fd.c \
-	ft_split.c
+	ft_split.c \
+	ft_strstr.c \
+	ft_strcmp.c
 
 BONUS_SRC = \
 	ft_lstnew_bonus.c \

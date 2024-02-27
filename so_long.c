@@ -60,48 +60,35 @@ void key_event_handler(mlx_key_data_t keydata, void* param) {
 
 // -----------------------------------------------------------------------------
 
-char    *ft_strstr(const char *haystack, const char *needle)
+int validate_ber_extension(const char *filename)
 {
-    unsigned int    i;
-    unsigned int    j;
+	const char *extension;
+	size_t filename_len;
+	size_t extension_len;
 
-    if (!needle[0])
-        return ((char *)haystack);
-    i = 0;
-    while (haystack[i])
-    {
-        j = 0;
-        while (needle[j] && haystack[i + j] == needle[j])
-            j++;
-        if (!needle[j])
-            return ((char *)&haystack[i]);
-        i++;
-    }
-    return (NULL);
-}
-
-
-
-bool validate_ber_extension(const char *filename) {
-	// Directly look for the ".ber" substring in the filename
-	const char *extension = ".ber";
-
-	// Find the position of ".ber" in the filename, if it exists
-	const char *found_extension = ft_strstr(filename, extension);
-
-	if (found_extension != NULL) {
-		// Check if ".ber" is at the end of the filename
-		size_t extension_pos = found_extension - filename;
-		size_t filename_len = ft_strlen(filename);
-
-		if (extension_pos + ft_strlen(extension) == filename_len) {
-			return true; // ".ber" is at the end
+	filename_len = ft_strlen(filename);
+	extension_len = 4;
+	extension = ".ber";
+	if (filename_len >= extension_len) {
+		// Compare the end of the filename with the extension
+		// Using ft_strcmp to compare the substring starting from the end of filename - extension_len
+		if (ft_strcmp(filename + filename_len - extension_len, extension) == 0) {
+			return 1; // True, filename ends with ".ber"
 		}
 	}
-
-	return false; // ".ber" not found at the end
+	return 0; // False, filename does not end with ".ber"
 }
 
+int	file_exists(const char *filename)
+{
+	int fd;
+
+	fd = open(filename, O_RDONLY);
+	if(fd == -1)
+		return (0);
+	close(fd);
+	return (1);
+}
 
 int32_t main(int32_t ac, char *av[])
 {
@@ -110,20 +97,22 @@ int32_t main(int32_t ac, char *av[])
 	if(ac != 2)
 	{
 		if(ac < 2) {
-			printf(ERROR_MESSAGE); // Indicate the error
+			printf(NO_MAP_ERR); // Indicate the error
 		} else {
-			printf("Too many arguments\n"); // Indicate the error
+			printf(NO_ARGS_ERR); // Indicate the error
 		}
 		return(EXIT_FAILURE); // Exit before attempting MLX operations
 	}
-	printf("%s\n", av[1]);
-	if (validate_ber_extension(av[1])) {
-		printf("This is a .ber file.\n");
-	} else {
+	if (!validate_ber_extension(av[1]))
+	{
 		printf("This is not a .ber file.\n");
 		return(EXIT_FAILURE);
 	}
-
+	if (!file_exists(av[1]))
+	{
+		printf("Error: File '%s' does not exist or cannot be accessed.\n", av[1]);
+		return(EXIT_FAILURE);
+	}
 
 	// Gotta error check this stuff
 	if (!(mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true)))

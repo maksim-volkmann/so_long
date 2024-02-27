@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvolkman <mvolkman@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 17:21:37 by mvolkman          #+#    #+#             */
-/*   Updated: 2024/02/27 13:35:57 by mvolkman         ###   ########.fr       */
+/*   Created: 2023/10/23 16:43:10 by mvolkman          #+#    #+#             */
+/*   Updated: 2024/02/27 12:34:43 by mvolkman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
-# include "libft/libft.h"
-# include <fcntl.h>
-# include <unistd.h>
+#include "libft.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 100
-# endif
+char	*ft_strstr(const char *haystack, const char *needle)
+{
+	unsigned int	i;
+	unsigned int	j;
 
-#define NO_MAP_ERR "Map is not provided!\n"
-#define NO_ARGS_ERR "Too many arguments!\n"
-
-#endif
+	if (!needle[0])
+		return ((char *)haystack);
+	i = 0;
+	while (haystack[i])
+	{
+		j = 0;
+		while (needle[j] && haystack[i + j] == needle[j])
+			j++;
+		if (!needle[j])
+			return ((char *)&haystack[i]);
+		i++;
+	}
+	return (NULL);
+}
