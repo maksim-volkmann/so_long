@@ -6,7 +6,7 @@
 /*   By: mvolkman <mvolkman@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 17:21:37 by mvolkman          #+#    #+#             */
-/*   Updated: 2024/02/27 13:35:57 by mvolkman         ###   ########.fr       */
+/*   Updated: 2024/02/28 09:33:55 by mvolkman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@
 #  define BUFFER_SIZE 100
 # endif
 
-#define NO_MAP_ERR "Map is not provided!\n"
-#define NO_ARGS_ERR "Too many arguments!\n"
+#define NO_MAP_ERR "ERROR: Map file is not provided!\n"
+#define NO_ARGS_ERR "ERROR: Too many arguments!\n"
+#define WRONG_FILE_EXT "ERROR: Wrong file extension!\n"
+#define NO_FILE_EXIST "ERROR: File '%s' does not exist or cannot be accessed.\n"
 
 #endif

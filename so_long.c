@@ -94,25 +94,14 @@ int32_t main(int32_t ac, char *av[])
 {
 	mlx_t* mlx;
 
-	if(ac != 2)
-	{
-		if(ac < 2) {
-			printf(NO_MAP_ERR); // Indicate the error
-		} else {
-			printf(NO_ARGS_ERR); // Indicate the error
-		}
-		return(EXIT_FAILURE); // Exit before attempting MLX operations
-	}
+	if(ac < 2)
+		return(EXIT_FAILURE, printf(NO_MAP_ERR));
+	if(ac > 2)
+		return(EXIT_FAILURE, printf(NO_ARGS_ERR));
 	if (!validate_ber_extension(av[1]))
-	{
-		printf("This is not a .ber file.\n");
-		return(EXIT_FAILURE);
-	}
+		return(EXIT_FAILURE, printf(WRONG_FILE_EXT));
 	if (!file_exists(av[1]))
-	{
-		printf("Error: File '%s' does not exist or cannot be accessed.\n", av[1]);
-		return(EXIT_FAILURE);
-	}
+		return(EXIT_FAILURE, printf(NO_FILE_EXIST, av[1]));
 
 	// Gotta error check this stuff
 	if (!(mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true)))
