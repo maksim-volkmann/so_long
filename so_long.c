@@ -41,6 +41,7 @@ void ft_randomize(void* param)
 }
 
 void key_event_handler(mlx_key_data_t keydata, void* param) {
+	// t_game mlx = param;
 	mlx_t* mlx = param;
 
 	if (keydata.action == MLX_PRESS) {
@@ -125,7 +126,7 @@ int	file_exists(const char *filename, mlx_t* mlx)
 
 int32_t main(int32_t ac, char *av[])
 {
-	mlx_t* mlx;
+	t_game game;
 
 	if(ac < 2)
 		return(EXIT_FAILURE, printf(NO_MAP_ERR));
@@ -136,55 +137,41 @@ int32_t main(int32_t ac, char *av[])
 
 
 	// Gotta error check this stuff
-	if (!(mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true)))
+	if (!(game.mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true)))
 	{
 		puts(mlx_strerror(mlx_errno));
 		return(EXIT_FAILURE);
 	}
-	if (!(image = mlx_new_image(mlx, 50, 50)))
+	if (!(image = mlx_new_image(game.mlx, 50, 50)))
 	{
-		mlx_close_window(mlx);
+		mlx_close_window(game.mlx);
 		puts(mlx_strerror(mlx_errno));
 		return(EXIT_FAILURE);
 	}
-	if (mlx_image_to_window(mlx, image, 0, 0) == -1)
+	if (mlx_image_to_window(game.mlx, image, 0, 0) == -1)
 	{
-		mlx_close_window(mlx);
+		mlx_close_window(game.mlx);
 		puts(mlx_strerror(mlx_errno));
 		return(EXIT_FAILURE);
 	}
-	if (!file_exists(av[1], mlx))
+	if (!file_exists(av[1], game.mlx))
 		return(EXIT_FAILURE, printf(NO_FILE_EXIST, av[1]));
-	// //Creating a wall.
-	// mlx_texture_t* wall_texture = mlx_load_png("wall50_v2.png");
-	// if (!wall_texture)
-	// 	return(EXIT_FAILURE);
-	// mlx_image_t* wall = mlx_texture_to_image(mlx, wall_texture);
-	// if (!wall)
-	// 	return(EXIT_FAILURE);
-	// // mlx_image_to_window(mlx, wall, 0, 0);
-	// mlx_image_to_window(mlx, wall, 0, 50);
-	// mlx_image_to_window(mlx, wall, 0, 100);
-	// mlx_image_to_window(mlx, wall, 0, 150);
-	// mlx_image_to_window(mlx, wall, 0, 200);
-	// mlx_image_to_window(mlx, wall, 0, 250);
+
 
 	//Creating a grass.
 	mlx_texture_t* grass_texture = mlx_load_png("grass50.png");
 	if (!grass_texture)
 		return(EXIT_FAILURE);
-	mlx_image_t* grass = mlx_texture_to_image(mlx, grass_texture);
+	mlx_image_t* grass = mlx_texture_to_image(game.mlx, grass_texture);
 	if (!grass)
 		return(EXIT_FAILURE);
-	mlx_image_to_window(mlx, grass, 200, 200);
+	mlx_image_to_window(game.mlx, grass, 200, 200);
 
+	mlx_loop_hook(game.mlx, ft_randomize, game.mlx);
+	mlx_key_hook(game.mlx, key_event_handler, game.mlx);
 
-
-	mlx_loop_hook(mlx, ft_randomize, mlx);
-	mlx_key_hook(mlx, key_event_handler, mlx);
-
-	mlx_loop(mlx);
-	mlx_terminate(mlx);
+	mlx_loop(game.mlx);
+	mlx_terminate(game.mlx);
 	return (EXIT_SUCCESS);
 }
 

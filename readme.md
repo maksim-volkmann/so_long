@@ -1,3 +1,8 @@
+# Info
+
+strerror - 
+
+
 # So_Long Project Plan
 
 This plan is designed to guide you through the development of the `so_long` project, ensuring that all requirements are met systematically.
