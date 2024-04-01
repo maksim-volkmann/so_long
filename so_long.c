@@ -6,7 +6,7 @@
 /*   By: mvolkman <mvolkman@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 08:12:57 by mvolkman          #+#    #+#             */
-/*   Updated: 2024/03/28 13:43:46 by mvolkman         ###   ########.fr       */
+/*   Updated: 2024/04/01 14:56:59 by mvolkman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,9 @@ int32_t	main(int ac, char *av[])
 	error_and_cleanup(&game, NULL);
 	return (EXIT_SUCCESS);
 }
+// Rename the main function to the_real_main and uncomment the following code
+// to check for memory leaks. This is only for testing purposes. And comment
+// a "error_and_cleanup(&game, NULL)" function to see actual leaks.
 
 // int main(int argc, char *argv[])
 // {
