@@ -1,7 +1,7 @@
-<div align="center">
+<span align="center">
 	<img src="https://raw.githubusercontent.com/ayogun/42-project-badges/main/badges/so_longe.png" width="150" alt="Libft badge" />
 	<h1>so_long</h1>
-</div>
+</span>
 
 ## Description
 
