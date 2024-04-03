@@ -4,7 +4,7 @@
 
 This project is part of the 42 school curriculum, showcasing a simple 2D maze game where players navigate a character through a map to collect items and find an exit. The game is developed using the MLX42 library, which is included within the project for rendering.
 
-![Gameplay GIF](path/to/your/gameplay.gif)
+![Gameplay GIF](redbull_bull.gif)
 
 ## Compilation and Execution
 
