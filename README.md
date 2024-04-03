@@ -1,6 +1,6 @@
 <div align="center">
 	<img src="https://raw.githubusercontent.com/ayogun/42-project-badges/main/badges/so_longe.png" width="150" alt="Libft badge" />
-	<h3>so_long</h3>
+	<h2>so_long</h2>
 </div>
 
 ## Description
