@@ -1,10 +1,11 @@
-# 42 School So Long Project
+<div align="center">
+	<img src="https://raw.githubusercontent.com/ayogun/42-project-badges/main/badges/so_longe.png" width="150" alt="Libft badge" />
+	<h1>so_long</h1>
+</div>
 
 ## Description
 
 This project is part of the 42 school curriculum, showcasing a simple 2D maze game where players navigate a character through a map to collect items and find an exit. The game is developed using the MLX42 library, which is included within the project for rendering.
-
-![Gameplay GIF](redbull_bull.gif)
 
 ## Compilation and Execution
 
@@ -50,9 +51,9 @@ To optimize performance, the game intelligently updates only parts of the screen
 - The map remains static unless a collectible is picked up, at which point only the affected tile is updated.
 - This approach minimizes redraw calls, enhancing the game's responsiveness and reducing CPU load.
 
-## Screenshot
+## Gameplay
 
-![Game Screenshot](path/to/your/screenshot.png)
+![Gameplay GIF](redbull_bull.gif)
 
 ## Note
 
